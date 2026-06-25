@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/shared/Header/Header";
+import ContextProvider, { CreateContextProvider } from "@/Context/ContextProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +24,9 @@ export default function RootLayout({ children }) {
       <body className="min-h-full flex flex-col">
         <Header />
         
-        <main>{children}</main>
+        <main>
+          <ContextProvider>{children}</ContextProvider>
+        </main>
       </body>
     </html>
   );
