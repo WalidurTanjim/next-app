@@ -2,6 +2,10 @@
 import React from 'react';
 import { ShoppingCartIcon, HeartIcon } from '@heroicons/react/24/outline';
 
+export function generateStaticParams() {
+  return [{id: "52771"}, {id: "53061"}, {id: "53011"}]
+}
+
 const getFoodById = async (id) => {
   try {
     const res = await fetch(`https://taxi-kitchen-api.vercel.app/api/v1/foods/${id}`);
