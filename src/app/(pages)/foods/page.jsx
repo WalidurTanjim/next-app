@@ -2,6 +2,14 @@ import FoodCard from '@/components/FoodCard/FoodCard';
 import SearchFood from '@/components/SearchFood/SearchFood';
 import React from 'react'
 
+export const metadata = {
+  title: "All Foods",
+//   title: {
+//      absolute: "Best foods"
+//   },
+  description: "You can peak up your best choice food from here",
+};
+
 const getFoods = async(search) => {
      try{
           const res = await fetch(`https://taxi-kitchen-api.vercel.app/api/v1/foods/random?search=${search}`, { next: { revalidate: 10 }});
