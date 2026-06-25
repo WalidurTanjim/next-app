@@ -2,9 +2,9 @@ import FoodCard from '@/components/FoodCard/FoodCard';
 import SearchFood from '@/components/SearchFood/SearchFood';
 import React from 'react'
 
-const getFoods = async() => {
+const getFoods = async(search) => {
      try{
-          const res = await fetch(`https://taxi-kitchen-api.vercel.app/api/v1/foods/random`);
+          const res = await fetch(`https://taxi-kitchen-api.vercel.app/api/v1/foods/random?search=${search}`);
           const data = await res.json();
           return data?.foods || [];
      }catch(err) {
@@ -13,9 +13,12 @@ const getFoods = async() => {
      }
 }
 
-const FoodsPage = async() => {
+const FoodsPage = async({ searchParams }) => {
+     const { search = "" } = await searchParams;
+     // console.log(search);
+
      // call getFoods function to fetch all foods
-     const foods = await getFoods();
+     const foods = await getFoods(search);
      // console.log(foods);
 
      if(foods === null) {
@@ -28,7 +31,7 @@ const FoodsPage = async() => {
 
      return (
           <div className='w-full px-2 md:px-5 lg:px-8 py-10'>
-               <h1 className='text-center text-2xl text-slate-700 font-medium'>All Foods in Here</h1>
+               <h1 className='text-center text-2xl text-slate-700 font-medium'>All Foods in Here <span className='text-orange-500'>{foods?.length || 0}</span> items</h1>
 
                <div className='pt-10'>
                     <SearchFood />

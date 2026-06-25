@@ -2,12 +2,11 @@
 // components/SearchBar.jsx
 import React from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import { useParams, useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function SearchFood() {
-     const router = useRouter();
-     const params = useParams();
-     console.log(router, params)
+  const router = useRouter();
+  const params = useSearchParams();
 
      const handleSearchFood = e => {
           e.preventDefault();
@@ -15,6 +14,9 @@ export default function SearchFood() {
           const form = e.target;
           const searchValue = form.searchFood.value;
           
+          const newParams = new URLSearchParams(params.toString());
+          newParams.set('search', searchValue);
+          router.push(`?${newParams.toString()}`);
      }
 
   return (
