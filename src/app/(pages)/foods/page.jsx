@@ -1,4 +1,5 @@
 import FoodCard from '@/components/FoodCard/FoodCard';
+import SearchFood from '@/components/SearchFood/SearchFood';
 import React from 'react'
 
 const getFoods = async() => {
@@ -28,6 +29,10 @@ const FoodsPage = async() => {
      return (
           <div className='w-full px-2 md:px-5 lg:px-8 py-10'>
                <h1 className='text-center text-2xl text-slate-700 font-medium'>All Foods in Here</h1>
+
+               <div className='pt-10'>
+                    <SearchFood />
+               </div>
 
                <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 py-10">
                     {
