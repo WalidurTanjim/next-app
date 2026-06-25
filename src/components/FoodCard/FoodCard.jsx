@@ -2,11 +2,13 @@
 // components/FoodCard.jsx
 import { HeartIcon, ShoppingCartIcon, EyeIcon } from '@heroicons/react/24/outline';
 import { HeartIcon as HeartSolidIcon } from '@heroicons/react/24/solid';
+import Link from 'next/link';
 import { useState } from 'react';
 
 const FoodCard = ({food}) => {
-     console.log(food)
+     // console.log(food)
 
+     // states
      const [isWishlisted, setIsWishlisted] = useState(false);
 
      const handleAddToCart = () => {
@@ -26,7 +28,7 @@ const FoodCard = ({food}) => {
      };
 
      return (
-          <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 max-w-xs w-full">
+          <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 w-full">
                {/* Image */}
                <div className="relative h-48 overflow-hidden">
                     <img
@@ -62,13 +64,13 @@ const FoodCard = ({food}) => {
                          </button>
 
                          <div className="flex items-center gap-2">
-                              <button
+                              <Link href={`/foods/${food.id}`}><button
                                    onClick={handleDetails}
                                    className="p-1.5 text-gray-600 hover:text-gray-800 transition-colors"
                                    aria-label="View details"
                               >
                                    <EyeIcon className="w-5 h-5" />
-                              </button>
+                              </button></Link>
 
                               <button
                                    onClick={handleWishlist}

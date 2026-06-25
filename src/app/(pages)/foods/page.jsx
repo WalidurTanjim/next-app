@@ -15,7 +15,7 @@ const getFoods = async() => {
 const FoodsPage = async() => {
      // call getFoods function to fetch all foods
      const foods = await getFoods();
-     console.log(foods);
+     // console.log(foods);
 
      if(foods === null) {
           return <h1 className='text-center text-2xl text-slate-700 font-medium py-10'>Failed to load foods. Please try again later.</h1>
